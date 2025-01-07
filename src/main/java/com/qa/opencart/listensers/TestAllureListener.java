@@ -1,5 +1,4 @@
-package com.qa.opencart.listeners;
-
+package com.qa.opencart.listensers;
 
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -18,7 +17,6 @@ public class TestAllureListener implements ITestListener {
 		return iTestResult.getMethod().getConstructorOrMethod().getName();
 	}
 
-	
 	// Text attachments for Allure
 	@Attachment(value = "Page screenshot", type = "image/png")
 	public byte[] saveScreenshotPNG(WebDriver driver) {

@@ -1,4 +1,4 @@
-package com.qa.opencart.listeners;
+package com.qa.opencart.listensers;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,7 +49,11 @@ public class ExtentReportListener implements ITestListener {
 		extentReports.setSystemInfo("Author", "Naveen AutomationLabs");
 		extentReports.setSystemInfo("Build#", "1.1");
 		extentReports.setSystemInfo("Team", "OpenCart QA Team");
-		extentReports.setSystemInfo("ENV NAME", System.getProperty("env"));
+		extentReports.setSystemInfo("Customer Name", "NAL");
+
+
+		//extentReports.setSystemInfo("ENV NAME", System.getProperty("env"));
+
 		return extentReports;
 	}
 
@@ -89,26 +93,24 @@ public class ExtentReportListener implements ITestListener {
 	}
 
 	public synchronized void onTestSuccess(ITestResult result) {
-		String methodName = result.getMethod().getMethodName();
-		System.out.println((methodName + " passed!"));
+		System.out.println((result.getMethod().getMethodName() + " passed!"));
 		test.get().pass("Test passed");
-		//test.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot(methodName), methodName).build());
+		//test.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
 	public synchronized void onTestFailure(ITestResult result) {
 		System.out.println((result.getMethod().getMethodName() + " failed!"));
 		String methodName = result.getMethod().getMethodName();
-		test.get().fail("Test failed");
-		test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot(methodName), methodName).build());
+
+		test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
 	public synchronized void onTestSkipped(ITestResult result) {
 		System.out.println((result.getMethod().getMethodName() + " skipped!"));
 		String methodName = result.getMethod().getMethodName();
-		test.get().skip("Test skipped");
-		//test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot(methodName), methodName).build());
+		test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(DriverFactory.getScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
