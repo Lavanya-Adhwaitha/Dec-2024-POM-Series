@@ -34,7 +34,7 @@ public class AccountsPage {
 	public String getAccTitle() {
 		//String Title=driver.getTitle();
 		String Title=eleutil.waitForTitleContainsAndFetch(AppConstant.DEFAULT_MEDIUM_TIME_OUT, AppConstant.ACCOUNT_PAGE_TITLE_VALUE);
-		System.out.println("The Account page Title is: " +Title);
+		System.out.println("The Account page Title contain  is : " +Title);
 		return Title;
 	}
 	
