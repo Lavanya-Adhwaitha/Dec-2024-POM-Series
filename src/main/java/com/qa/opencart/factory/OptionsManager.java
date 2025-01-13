@@ -22,6 +22,14 @@ public class OptionsManager {
 	
 	public ChromeOptions getChromeOptions() {
 		co=new ChromeOptions();
+		//co.addArguments("--remote-allow-origin=*");
+		//if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			//co.setBrowserVersion(prop.getProperty("browserversion"));
+			//co.setCapability("browsername", "chrome");
+			//co.setCapability("enableVNC", true);
+					
+		//}
+				
 		if(Boolean.parseBoolean(prop.getProperty("headless").trim())) {
 			co.addArguments("--headless");
 		}
